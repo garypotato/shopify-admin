@@ -14,12 +14,12 @@ export async function GET() {
 
 		return new Response(JSON.stringify({ data: products, error: null }), {
 			status: 200,
-			headers: { 'Content-Type': 'application/json' },
+			headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
 		});
 	} catch (error) {
 		return new Response(JSON.stringify({ data: null, error: error.message }), {
 			status: 500,
-			headers: { 'Content-Type': 'application/json' },
+			headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
 		});
 	}
 }
