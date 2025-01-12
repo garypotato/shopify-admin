@@ -4,12 +4,11 @@ export async function POST(request) {
 	let metafields;
 
 	try {
-		const { owner_resource, owner_id } = await request.json();
+		const body = await request.json();
 
 		metafields = await shopify.metafield.list({
 			metafield: {
-				owner_resource,
-				owner_id,
+				...body,
 			},
 		});
 
