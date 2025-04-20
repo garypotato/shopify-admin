@@ -1,8 +1,22 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
+import ApiClient from "../class/ApiClient";
 
 export default function BeginnerCourses() {
+  useEffect(() => {
+    const fetchCollections = async () => {
+      try {
+        const res = await ApiClient.get("/api/collections");
+        console.log(res);
+      } catch (error) {
+        console.error("Error fetching collections:", error);
+      }
+    };
+
+    fetchCollections();
+  }, []);
+
   return (
     <div className="mb-5">
       <h2 className="text-lg font-bold mx-4 mb-2">新手课程</h2>
