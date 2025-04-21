@@ -29,9 +29,6 @@ export default function Home() {
         </div>
 
         <HomePageBody />
-
-        {/* Gold Medal Nanny Section */}
-        <GoldMedalNanny />
       </div>
 
       {/* Bottom Navigation */}

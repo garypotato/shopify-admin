@@ -58,7 +58,7 @@ class ApiClient {
       }
 
       const data = await response.json();
-      return { success: true, data, error: null };
+      return data as ApiResult<T>;
     } catch (error) {
       // Return a standardized error format that matches the API routes
       return {
