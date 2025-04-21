@@ -1,5 +1,5 @@
 import { ShopifyCollection } from "@/app/api/collections/route";
-import LatestNews from "../LatestNews";
+import LatestNews from "../page/LatestNews";
 import ApiClient, { ApiResult } from "@/app/class/ApiClient";
 import { T_product } from "@/app/api/products/route";
 import GoldMedalNanny from "../molecules/GoldMedalNanny";
