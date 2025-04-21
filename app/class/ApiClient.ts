@@ -86,9 +86,5 @@ class ApiClient {
   }
 }
 
-// For backward compatibility, export a default instance
 const defaultInstance = new ApiClient();
 export default defaultInstance;
-
-// Also export the class for when custom instances are needed
-export { ApiClient };

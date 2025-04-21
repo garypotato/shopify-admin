@@ -1,10 +1,12 @@
 "use client";
 import { useState } from "react";
+import { useAppSelector } from "@/app/store/hooks";
 
 type TabType = "home" | "news" | "course";
 
 export default function BottomNavigation() {
   const [activeTab, setActiveTab] = useState<TabType>("home");
+  const { translations } = useAppSelector((state) => state.language);
 
   return (
     <div className="fixed bottom-0 w-full max-w-[430px] flex justify-around bg-white border-t border-gray-200 py-2 z-10">
@@ -14,7 +16,7 @@ export default function BottomNavigation() {
         }`}
         onClick={() => setActiveTab("home")}
       >
-        <span>首页</span>
+        <span>{translations["nav.home"]}</span>
       </div>
       <div
         className={`flex flex-col items-center text-sm cursor-pointer py-1 flex-1 text-center ${
@@ -22,7 +24,7 @@ export default function BottomNavigation() {
         }`}
         onClick={() => setActiveTab("news")}
       >
-        <span>资讯</span>
+        <span>{translations["nav.news"]}</span>
       </div>
       <div
         className={`flex flex-col items-center text-sm cursor-pointer py-1 flex-1 text-center ${
@@ -30,7 +32,7 @@ export default function BottomNavigation() {
         }`}
         onClick={() => setActiveTab("course")}
       >
-        <span>课程</span>
+        <span>{translations["nav.courses"]}</span>
       </div>
     </div>
   );

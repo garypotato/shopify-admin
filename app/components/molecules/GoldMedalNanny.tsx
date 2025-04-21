@@ -1,11 +1,15 @@
 "use client";
 
 import React from "react";
+import { useAppSelector } from "@/app/store/hooks";
 
 export default function GoldMedalNanny() {
+  const { translations } = useAppSelector((state) => state.language);
   return (
     <div className="mb-5">
-      <h2 className="text-lg font-bold mx-4 mb-2">金牌月嫂</h2>
+      <h2 className="text-lg font-bold mx-4 mb-2">
+        {translations["nanny.gold_medal"]}
+      </h2>
       <div className="flex flex-col gap-3 px-4">
         {[1, 2, 3].map((item) => (
           <div key={item} className="flex items-center gap-3 py-2">
@@ -18,10 +22,12 @@ export default function GoldMedalNanny() {
             ></div>
             <div className="flex-1">
               <h3 className="text-base font-medium mb-1">Mary Poppins</h3>
-              <p className="text-sm text-gray-600">Maternity Nanny</p>
+              <p className="text-sm text-gray-600">
+                {translations["nanny.maternity"]}
+              </p>
             </div>
             <button className="px-3 py-2 bg-gray-100 text-gray-800 border-none rounded-full text-sm">
-              Hire
+              {translations["nanny.hire"]}
             </button>
           </div>
         ))}

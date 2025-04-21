@@ -9,39 +9,37 @@ const HomePageBody = async () => {
 
   if (!res.success) {
     return <div>Error loading collections</div>;
-  } else {
-    const collections = res.data;
-
-    let collectionPromises: Promise<ApiResult<T_product[]>>[] = [];
-    collections.forEach((collection) => {
-      collectionPromises.push(
-        ApiClient.post<T_product[]>(
-          "/api/products",
-          {
-            collection_id: collection.id,
-          },
-          {}
-        )
-      );
-    });
-
-    const collectionResults = await Promise.all(collectionPromises);
-
-    if (collectionResults[0].success && !collectionResults[1].success) {
-      return <LatestNews products={collectionResults[0].data} />;
-    } else if (!collectionResults[0].success && collectionResults[1].success) {
-      <GoldMedalNanny />;
-    } else if (collectionResults[0].success && collectionResults[1].success) {
-      return (
-        <>
-          <LatestNews products={collectionResults[0].data} />
-          <GoldMedalNanny />
-        </>
-      );
-    } else {
-      return <div>Error loading collections</div>;
-    }
   }
+
+  const collections = res.data;
+
+  let collectionPromises: Promise<ApiResult<T_product[]>>[] = [];
+  collections.forEach((collection) => {
+    collectionPromises.push(
+      ApiClient.post<T_product[]>(
+        "/api/products",
+        {
+          collection_id: collection.id,
+        },
+        {}
+      )
+    );
+  });
+
+  const collectionResults = await Promise.all(collectionPromises);
+
+  // Prepare data for client components
+  const newsProducts = collectionResults[0]?.success
+    ? collectionResults[0].data
+    : [];
+
+  // Render client components with data
+  return (
+    <>
+      <LatestNews products={newsProducts} />
+      <GoldMedalNanny />
+    </>
+  );
 };
 
 export default HomePageBody;
