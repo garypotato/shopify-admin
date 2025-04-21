@@ -9,7 +9,7 @@ export async function GET(request: NextRequest, context: any) {
     const product = await shopify.product.get(parseInt(id, 10));
 
     return NextResponse.json(
-      { data: product, error: null },
+      { success: true, data: product, error: null },
       {
         status: 200,
         headers: {
@@ -22,7 +22,7 @@ export async function GET(request: NextRequest, context: any) {
       error instanceof Error ? error.message : "Unknown error";
 
     return NextResponse.json(
-      { data: null, error: errorMessage },
+      { success: false, data: null, error: errorMessage },
       {
         status: 500,
         headers: {

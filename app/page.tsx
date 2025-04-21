@@ -1,8 +1,7 @@
 import Image from "next/image";
-import LatestNews from "./components/LatestNews";
-import BeginnerCourses from "./components/BeginnerCourses";
-import GoldMedalNanny from "./components/GoldMedalNanny";
-import BottomNavigation from "./components/BottomNavigation";
+import GoldMedalNanny from "./components/molecules/GoldMedalNanny";
+import BottomNavigation from "./components/molecules/BottomNavigation";
+import HomePageBody from "./components/organisms/HomePageBody";
 
 export default function Home() {
   return (
@@ -29,11 +28,7 @@ export default function Home() {
           />
         </div>
 
-        {/* Latest News Section */}
-        <LatestNews />
-
-        {/* Beginner Courses Section */}
-        <BeginnerCourses />
+        <HomePageBody />
 
         {/* Gold Medal Nanny Section */}
         <GoldMedalNanny />
