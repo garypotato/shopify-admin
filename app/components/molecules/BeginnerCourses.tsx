@@ -16,7 +16,7 @@ const BeginnerCourses: React.FC<LatestNewsProps> = ({ products }) => {
         {products.map((item) => (
           <div key={item.id} className="flex items-center gap-3 py-2">
             <Image
-              className="w-[60px] h-[60px] rounded bg-gray-200"
+              className="w-[60px] h-[60px] rounded-sm bg-gray-200"
               src={item.image?.src}
               alt="News Image"
               fill
